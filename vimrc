@@ -6,6 +6,7 @@ set smartcase
 set autoindent
 set background=dark
 set wildmode=list:longest
+let g:python_space_error_highlight=1
 " python
 augroup python
   autocmd!
@@ -13,7 +14,8 @@ augroup python
     \ setlocal tabstop=4 |
     \ setlocal softtabstop=4 |
     \ setlocal shiftwidth=4 |
-    \ setlocal expandtab
+    \ setlocal expandtab |
+    \ hi pythonSpaceError guibg=darkred ctermbg=darkred
 augroup END
 " GUI
 if has('gui_running')
