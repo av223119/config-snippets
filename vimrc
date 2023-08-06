@@ -7,6 +7,14 @@ set autoindent
 set background=dark
 set wildmode=list:longest
 let g:python_space_error_highlight=1
+" undo / backup / swap
+set nobackup
+set directory=/var/tmp//
+set undodir=/var/tmp//
+" keybindings
+noremap <leader>e :Lex<cr>
+vnoremap < <gv
+vnoremap > >gv
 " python
 augroup python
   autocmd!
