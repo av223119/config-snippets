@@ -1,5 +1,6 @@
 " general
 syntax on
+filetype plugin indent on
 set number
 set incsearch
 set smartcase
@@ -19,10 +20,6 @@ vnoremap > >gv
 augroup python
   autocmd!
   autocmd FileType python
-    \ setlocal tabstop=4 |
-    \ setlocal softtabstop=4 |
-    \ setlocal shiftwidth=4 |
-    \ setlocal expandtab |
     \ hi pythonSpaceError guibg=darkred ctermbg=darkred
 augroup END
 " GUI
