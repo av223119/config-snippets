@@ -1,13 +1,19 @@
 " general
+set nocompatible
 syntax on
 filetype plugin indent on
 set number
 set incsearch
 set smartcase
 set autoindent
+set laststatus=2
+set scrolloff=1
 set background=dark
 set wildmode=list:longest
+set formatoptions+=j
+set autoread
 let g:python_space_error_highlight=1
+let g:is_posix=1
 " undo / backup / swap
 set nobackup
 set directory=/var/tmp//
