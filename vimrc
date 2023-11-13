@@ -9,15 +9,16 @@ set autoindent
 set laststatus=2
 set scrolloff=1
 set background=dark
-set wildmode=list:longest
-set formatoptions+=j
-set autoread
-let g:python_space_error_highlight=1
-let g:is_posix=1
-" undo / backup / swap
-set nobackup
-set directory=/var/tmp//
-set undodir=/var/tmp//
+set wildmode=list:longest             " list all, complete longest
+set formatoptions+=j                  " merge two commented lines
+set autoread                          " autoreload modified files
+set path+=**                          " :find recursively
+set nobackup                          " no files~
+set directory=/var/tmp//              " swap files, insecure!
+set undodir=/var/tmp//                " undo files, insecure!
+let g:python_space_error_highlight=1  " line-final spaces
+let g:is_posix=1                      " allows $()
+let g:netrw_liststyle=3               " tree view
 " keybindings
 noremap <leader>e :Lex<cr>
 vnoremap < <gv
