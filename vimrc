@@ -45,5 +45,10 @@ if has('gui_running')
   let g:neosolarized_italic=1
   colorscheme NeoSolarized
 else
-  colorscheme elflord
+  if has('termguicolors')
+    set termguicolors
+    colorscheme NeoSolarized
+  else
+    colorscheme elflord
+  endif
 endif
