@@ -13,6 +13,8 @@ set wildmode=list:longest             " list all, complete longest
 set formatoptions+=j                  " merge two commented lines
 set autoread                          " autoreload modified files
 set path+=**                          " :find recursively
+set wildignore+=**/venv/**            " don't want venv
+set wildignore+=**/__pycache__/**     " nor pycache in :find
 set nobackup                          " no files~
 set directory=/var/tmp//              " swap files, insecure!
 set undodir=/var/tmp//                " undo files, insecure!
