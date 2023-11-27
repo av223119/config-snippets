@@ -6,9 +6,9 @@ set number
 set incsearch
 set smartcase
 set autoindent
-set laststatus=2
-set scrolloff=1
-set background=dark
+set laststatus=2                      " always
+set scrolloff=1                       " top/bottom screen offset
+set background=dark                   " unless under the sun
 set wildmode=list:longest             " list all, complete longest
 set formatoptions+=j                  " merge two commented lines
 set autoread                          " autoreload modified files
@@ -25,12 +25,6 @@ let g:netrw_liststyle=3               " tree view
 noremap <leader>e :Lex<cr>
 vnoremap < <gv
 vnoremap > >gv
-" python
-augroup python
-  autocmd!
-  autocmd FileType python
-    \ hi pythonSpaceError guibg=darkred ctermbg=darkred
-augroup END
 " GUI
 if has('gui_running')
   if has('linux')
@@ -52,3 +46,23 @@ else
     colorscheme elflord
   endif
 endif
+
+" python
+augroup python
+  autocmd!
+  autocmd FileType python
+    \ hi pythonSpaceError guibg=darkred ctermbg=darkred
+augroup END
+
+" set grep to git grep if possible
+function! MaybeSetGitGrep()
+  silent call system("git status")
+  if v:shell_error == 0
+    set grepprg=git\ --no-pager\ grep\ -n\ $*
+  endif
+endfunction
+
+augroup grepcmd
+  autocmd!
+  autocmd VimEnter,DirChanged * call MaybeSetGitGrep()
+augroup END
