@@ -54,15 +54,16 @@ augroup python
     \ hi pythonSpaceError guibg=darkred ctermbg=darkred
 augroup END
 
-" set grep to git grep if possible
-function! MaybeSetGitGrep()
+" Grep is either git grep or recursive grep
+function! Grep(...)
+  let args = [expandcmd(join(a:000, ' '))]
   silent call system("git status")
   if v:shell_error == 0
-    set grepprg=git\ --no-pager\ grep\ -n\ $*
+    let prg = ["git", "--no-pager", "grep", "-n"] + args
+  else
+    let prg = ["grep", "-R", "-n"] + args + ['.']
   endif
+  return system(join(prg, " "))
 endfunction
 
-augroup grepcmd
-  autocmd!
-  autocmd VimEnter,DirChanged * call MaybeSetGitGrep()
-augroup END
+command! -nargs=+ Grep cgetexpr Grep(<f-args>) | cwindow
