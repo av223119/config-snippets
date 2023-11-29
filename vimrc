@@ -1,4 +1,4 @@
-" general
+" General
 set nocompatible
 syntax on
 filetype plugin indent on
@@ -21,10 +21,7 @@ set undodir=/var/tmp//                " undo files, insecure!
 let g:python_space_error_highlight=1  " line-final spaces
 let g:is_posix=1                      " allows $()
 let g:netrw_liststyle=3               " tree view
-" keybindings
-noremap <leader>e :Lex<cr>
-vnoremap < <gv
-vnoremap > >gv
+
 " GUI
 if has('gui_running')
   if has('linux')
@@ -55,15 +52,19 @@ augroup python
 augroup END
 
 " Grep is either git grep or recursive grep
-function! Grep(...)
-  let args = [expandcmd(join(a:000, ' '))]
+function! Grep(p)
   silent call system("git status")
   if v:shell_error == 0
-    let prg = ["git", "--no-pager", "grep", "-n"] + args
+    let prg = $"git --no-pager grep -n {a:p}"
   else
-    let prg = ["grep", "-R", "-n"] + args + ['.']
+    let prg = $"grep -R -n {a:p} ."
   endif
-  return system(join(prg, " "))
+  return system(prg)
 endfunction
-
 command! -nargs=+ Grep cgetexpr Grep(<f-args>) | cwindow
+
+" keybindings
+noremap <leader>e :Lex<cr>
+noremap <leader>g :execute"Grep " . expand("<cword>")<cr>
+vnoremap < <gv
+vnoremap > >gv
