@@ -15,20 +15,25 @@ set path+=**                          " :find recursively
 set wildignore+=**/venv/**            " don't want venv
 set wildignore+=**/__pycache__/**     " nor pycache in :find
 set nobackup                          " no files~
-set directory=/var/tmp//              " swap files, insecure!
-set undodir=/var/tmp//                " undo files, insecure!
+set noswapfile                        " no swap files either
 let g:python_space_error_highlight=1  " line-final spaces
 let g:is_posix=1                      " allows $()
 let g:netrw_liststyle=3               " tree view
 
+" Personal undo dir
+if empty(glob('~/.vim/undo'))
+  silent call system('mkdir -p ~/.vim/undo')
+endif
+set undodir=~/.vim/undo//
+
 " Install Plug
 if empty(glob('~/.vim/autoload/plug.vim'))
-  let s:url='https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  let url='https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   silent call system('wget --help')
   if v:shell_error
-    silent execute $'!curl -fLo ~/.vim/autoload/plug.vim --create-dirs {s:url}'
+    silent execute $'!curl -fLo ~/.vim/autoload/plug.vim --create-dirs {url}'
   else
-    silent execute $'!wget -P ~/.vim/autoload {s:url}'
+    silent execute $'!wget -P ~/.vim/autoload {url}'
   endif
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
@@ -68,11 +73,13 @@ let g:oceanic_next_terminal_italic=1
 "colorscheme NeoSolarized
 colorscheme OceanicNext
 
-" python
-augroup python
+" filetype-specific stuff
+augroup filetypes
   autocmd!
   autocmd FileType python
     \ hi pythonSpaceError guibg=darkred ctermbg=darkred
+  autocmd FileType vim
+    \ setlocal tabstop=2 shiftwidth=2 expandtab
 augroup END
 
 " Grep is either git grep or recursive grep
