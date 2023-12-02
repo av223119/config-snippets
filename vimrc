@@ -42,9 +42,11 @@ endif
 call plug#begin()
 
 Plug 'overcache/NeoSolarized'
-" lifepillar/vim-solarized8
-
+Plug 'lifepillar/vim-solarized8'
 Plug 'mhartington/oceanic-next'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -84,18 +86,27 @@ augroup END
 
 " Grep is either git grep or recursive grep
 function! Grep(p)
-  silent call system("git status")
+  silent call system('git status')
   if v:shell_error
-    let prg = $"grep -R -n {a:p} ."
+    let prg = $'grep -R -n {a:p} .'
   else
-    let prg = $"git --no-pager grep -n {a:p}"
+    let prg = $'git --no-pager grep -n {a:p}'
   endif
   return system(prg)
 endfunction
+
+" Custom commands
 command! -nargs=+ Grep cgetexpr Grep(<f-args>) | cwindow
 
+command! -bang -nargs=* GitGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number -- '.fzf#shellescape(<q-args>),
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
 " keybindings
-noremap <leader>e :Lex<cr>
-noremap <leader>g :execute"Grep " . expand("<cword>")<cr>
+noremap <leader>ff :Files<cr>
+noremap <leader>gf :GFiles<cr>
+noremap <leader>gg :GitGrep<cr>
+"noremap <leader>g :execute 'Grep ' . expand('<cword>')<cr>
 vnoremap < <gv
 vnoremap > >gv
