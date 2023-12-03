@@ -99,9 +99,14 @@ endfunction
 command! -nargs=+ Grep cgetexpr Grep(<f-args>) | cwindow
 
 command! -bang -nargs=* GitGrep
-  \ call fzf#vim#grep(
-  \   'git grep --line-number -- '.fzf#shellescape(<q-args>),
-  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+  \ let gitroot = systemlist('git rev-parse --show-toplevel')[0]
+  \ | if v:shell_error
+  \ |   echoerr 'Not in git repo'
+  \ | else
+  \ |   call fzf#vim#grep(
+  \       'git grep --line-number -- '.fzf#shellescape(<q-args>),
+  \       fzf#vim#with_preview({'dir': gitroot}), <bang>0)
+  \ | endif
 
 " keybindings
 noremap <leader>ff :Files<cr>
