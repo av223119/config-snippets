@@ -84,22 +84,16 @@ augroup filetypes
     \ setlocal tabstop=2 shiftwidth=2 expandtab
 augroup END
 
-" Grep is either git grep or recursive grep
-function! Grep(p)
-  silent call system('git status')
-  if v:shell_error
-    let prg = $'grep -R -n {a:p} .'
-  else
-    let prg = $'git --no-pager grep -n {a:p}'
-  endif
-  return system(prg)
-endfunction
-
-" Custom commands
-command! -nargs=+ Grep cgetexpr Grep(<f-args>) | cwindow
+command! -nargs=1 Grep
+  \   let r = system('git --no-pager grep -n <q-args>')
+  \ | if v:shell_error == 128
+  \ |   let r = system('grep -R -n <q-args> .')
+  \ | endif
+  \ | cgetexpr r
+  \ | cwindow
 
 command! -bang -nargs=* GitGrep
-  \ let gitroot = systemlist('git rev-parse --show-toplevel')[0]
+  \   let gitroot = systemlist('git rev-parse --show-toplevel')[0]
   \ | if v:shell_error
   \ |   echoerr 'Not in git repo'
   \ | else
