@@ -4,6 +4,7 @@ syntax on
 filetype plugin indent on
 set number
 set incsearch
+set ignorecase
 set smartcase
 set autoindent
 set laststatus=2                      " always
@@ -42,7 +43,6 @@ endif
 call plug#begin()
 
 Plug 'overcache/NeoSolarized'
-Plug 'lifepillar/vim-solarized8'
 Plug 'mhartington/oceanic-next'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
