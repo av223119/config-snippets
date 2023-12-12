@@ -17,6 +17,7 @@ set wildignore+=**/venv/**            " don't want venv
 set wildignore+=**/__pycache__/**     " nor pycache in :find
 set nobackup                          " no files~
 set noswapfile                        " no swap files either
+set virtualedit=block                 " visual-block can move past eol
 let g:python_space_error_highlight=1  " line-final spaces
 let g:is_posix=1                      " allows $()
 let g:netrw_liststyle=3               " tree view
