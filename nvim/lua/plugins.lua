@@ -20,16 +20,16 @@ require("lazy").setup({
 		end
 	},
 	{
-		"overcache/NeoSolarized",
+		"EdenEast/nightfox.nvim",
 		config = function()
-			vim.g.neosolarized_italic = true
-		end
-	},
-	{
-		"shaunsingh/nord.nvim",
-		config = function()
-			vim.g.nord_borders = true
-			vim.cmd.colorscheme "nord"
+			require("nightfox").setup({
+				options = {
+					styles = {
+						comments = "italic",
+					},
+				},
+			})
+			vim.cmd.colorscheme "terafox"
 		end
 	},
 	{
