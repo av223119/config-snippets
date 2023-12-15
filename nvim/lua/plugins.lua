@@ -48,9 +48,7 @@ require("lazy").setup({
 					"markdown",
 					"html",
 					"htmldjango",
-					"dockerfile",
-					"ini",
-					"toml"
+					"diff",
 				},
 				auto_install = true,
 				highlight = {
@@ -61,6 +59,9 @@ require("lazy").setup({
 					enable = true
 				}
 			})
+			-- some themes omit diff definitions
+			vim.cmd.highlight "def link @text.diff.delete DiffRemoved"
+			vim.cmd.highlight "def link @text.diff.add DiffAdded"
 		end
 	},
 })
