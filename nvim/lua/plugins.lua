@@ -64,4 +64,13 @@ require("lazy").setup({
 			vim.cmd.highlight "def link @text.diff.add DiffAdded"
 		end
 	},
+	{
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		keys = {
+			{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+			{ "<leader>gf", "<cmd>Telescope git_files<cr>", desc = "Git Files" },
+		}
+	}
 })
