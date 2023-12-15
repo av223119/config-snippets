@@ -11,4 +11,3 @@ vim.keymap.set("c", "<right>", ifpum("<down>", "<right>"), { expr = true })
 
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
-

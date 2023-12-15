@@ -1,13 +1,14 @@
-vim.o.termguicolors = true
-vim.o.number = true
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.scrolloff = 1
-vim.o.virtualedit = "block"
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
+vim.opt.termguicolors = true
+vim.opt.number = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.scrolloff = 1
+vim.opt.virtualedit = "block"
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.path = { ".", "**" }
 
 -- Ideas
--- vim.o.cursorline = true
--- vim.o.cursorlineopt = "number"
--- vim.o.inccommand
+-- vim.opt.cursorline = true
+-- vim.opt.cursorlineopt = "number"
+-- vim.opt.inccommand
