@@ -7,7 +7,7 @@ M.find_files = function()
 	local opts = {}
 	local cwd = vim.fn.getcwd()
 	if is_git[cwd] == nil then
-		vim.fn.system("git rev-parse --is-inside-work-tree")
+		vim.fn.system { "git", "rev-parse", "--is-inside-work-tree" }
 		is_git[cwd] = vim.v.shell_error == 0
 	end
 

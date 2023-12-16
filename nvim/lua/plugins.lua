@@ -72,12 +72,13 @@ require("lazy").setup({
 			{ "<leader>ff", function() require("local").find_files() end, desc="Find Files (git or not)" },
 		},
 		config = function()
-			local actions = require("telescope.actions")
+			actions = require("telescope.actions")
 			require("telescope").setup({
 				defaults = {
 					mappings = {
 						i = {
-							["<Esc>"] = actions.close
+							["<Esc>"] = actions.close,
+							["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 						},
 					},
 				},
