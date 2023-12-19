@@ -30,9 +30,12 @@ vim.keymap.set("c", "<Right>", has(pum, "<Down>", "<Right>"), { expr = true })
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
+--[[
+This doesn't work on MacOS, where Ctrl-Up and Ctrl-Down are caught by the system
 vim.keymap.set({ "n", "i" }, "<C-Up>", "<C-w><Up>")
 vim.keymap.set({ "n", "i" }, "<C-Down>", "<C-w><Down>")
 vim.keymap.set({ "n", "i" }, "<C-Left>", "<C-w><Left>")
 vim.keymap.set({ "n", "i" }, "<C-Right>", "<C-w><Right>")
+--]]
 
 -- vim.keymap.set("n", "<Esc>", "<C-l>", { remap = true })
