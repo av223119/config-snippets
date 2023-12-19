@@ -13,13 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
-		"mhartington/oceanic-next",
-		config = function()
-			vim.g.oceanic_next_terminal_bold = true
-			vim.g.oceanic_next_terminal_italic = true
-		end
-	},
-	{
 		"EdenEast/nightfox.nvim",
 		config = function()
 			require("nightfox").setup({
