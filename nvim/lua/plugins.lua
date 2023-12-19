@@ -62,8 +62,9 @@ require("lazy").setup({
 		branch = "0.1.x",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		keys = {
-			{ "<leader>ff", function() require("local").find_files() end, desc="Find files (git or not)" },
-			{ "<leader>fg", "<cmd>Telescope live_grep<CR>", desc="Git (and not only) grep" },
+			{ "<leader>ff", function() require("local").find_files() end, desc="Find: Files" },
+			{ "<leader>fg", "<cmd>Telescope live_grep<CR>", desc="Find: Grep" },
+			{ "<leader>fb", "<cmd>Telescope buffers<CR>", desc="Find: Buffers" },
 		},
 		config = function()
 			actions = require("telescope.actions")
