@@ -1,3 +1,5 @@
+--[[
+-- Replaced by telescope live_grep
 vim.api.nvim_create_user_command(
 	"Grep",
 	function(opts)
@@ -12,3 +14,4 @@ vim.api.nvim_create_user_command(
 	end,
 	{ nargs = 1 }
 )
+]]

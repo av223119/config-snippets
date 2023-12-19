@@ -31,7 +31,7 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 --[[
-This doesn't work on MacOS, where Ctrl-Up and Ctrl-Down are caught by the system
+-- This doesn't work on MacOS, where Ctrl-Up and Ctrl-Down are caught by the system
 vim.keymap.set({ "n", "i" }, "<C-Up>", "<C-w><Up>")
 vim.keymap.set({ "n", "i" }, "<C-Down>", "<C-w><Down>")
 vim.keymap.set({ "n", "i" }, "<C-Left>", "<C-w><Left>")
