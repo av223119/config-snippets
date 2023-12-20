@@ -15,3 +15,14 @@ vim.api.nvim_create_user_command(
 	{ nargs = 1 }
 )
 ]]
+
+vim.api.nvim_create_augroup("filetypes", {})
+
+vim.api.nvim_create_autocmd("FileType", {
+	group = "filetypes",
+	pattern = "toml",
+	desc = "expand tabs in toml",
+	callback = function()
+		vim.bo.expandtab = true
+	end,
+})
