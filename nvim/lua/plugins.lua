@@ -14,6 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{
 		"EdenEast/nightfox.nvim",
+		lazy = false,
+		priority = 1000,
 		config = function()
 			require("nightfox").setup({
 				options = {
@@ -62,7 +64,7 @@ require("lazy").setup({
 		branch = "0.1.x",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		keys = {
-			{ "<leader>ff", function() require("local").find_files() end, desc="Find: Files" },
+			{ "<leader>ff", function() require("av223119").find_files() end, desc="Find: Files" },
 			{ "<leader>fg", "<cmd>Telescope live_grep<CR>", desc="Find: Grep" },
 			{ "<leader>fb", "<cmd>Telescope buffers<CR>", desc="Find: Buffers" },
 		},
