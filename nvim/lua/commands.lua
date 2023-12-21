@@ -20,7 +20,7 @@ vim.api.nvim_create_augroup("filetypes", {})
 
 vim.api.nvim_create_autocmd("FileType", {
 	group = "filetypes",
-	pattern = "toml",
+	pattern = { "toml", "cfg", "conf" },
 	desc = "expand tabs in toml",
 	callback = function()
 		vim.bo.expandtab = true
