@@ -11,7 +11,7 @@ end
 
 --[[
 function quickfix()
-	for w = 1, vim.fn.winnr('$') do
+	for w = 1, vim.fn.winnr("$") do
 		if vim.fn.win_gettype(w) == "quickfix" then
 			return true
 		end
@@ -38,4 +38,9 @@ vim.keymap.set({ "n", "i" }, "<C-Left>", "<C-w><Left>")
 vim.keymap.set({ "n", "i" }, "<C-Right>", "<C-w><Right>")
 --]]
 
+--[[
+-- Ctrl-L is good enough
 -- vim.keymap.set("n", "<Esc>", "<C-l>", { remap = true })
+--]]
+
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
