@@ -7,8 +7,8 @@ vim.opt.virtualedit = "block"
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.path = { ".", "**" }
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
 
 -- Ideas
--- vim.opt.cursorline = true
--- vim.opt.cursorlineopt = "number"
 -- vim.opt.inccommand

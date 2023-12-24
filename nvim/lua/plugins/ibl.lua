@@ -3,7 +3,7 @@ return {
 	main = "ibl",
 	opts = {
 		indent = {
-			char = "┊", -- alternatives: BB¦ 4!┊
+			char = "¦", -- alternatives: BB¦ 4!┊
 		},
 		scope = {
 			show_start = false,
