@@ -28,5 +28,10 @@ return {
 		-- some themes omit diff definitions
 		vim.cmd.highlight "def link @text.diff.delete DiffRemoved"
 		vim.cmd.highlight "def link @text.diff.add DiffAdded"
+
+		-- folding
+		vim.opt.foldmethod = "expr"
+		vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+		vim.opt.foldlevel = 99
 	end
 }
