@@ -1,4 +1,5 @@
 return {
+--[[
 	"lukas-reineke/indent-blankline.nvim",
 	main = "ibl",
 	opts = {
@@ -10,4 +11,5 @@ return {
 			show_end = false,
 		},
 	},
+--]]
 }
