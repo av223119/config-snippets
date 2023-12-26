@@ -16,13 +16,21 @@ vim.api.nvim_create_user_command(
 )
 ]]
 
-vim.api.nvim_create_augroup("filetypes", {})
+vim.api.nvim_create_augroup("__custom", {})
 
 vim.api.nvim_create_autocmd("FileType", {
-	group = "filetypes",
+	group = "__custom",
 	pattern = { "toml", "cfg", "conf" },
 	desc = "expand tabs in toml",
 	callback = function()
 		vim.bo.expandtab = true
+	end,
+})
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = "__custom",
+	desc = "highlight on yank",
+	callback = function()
+		vim.highlight.on_yank()
 	end,
 })

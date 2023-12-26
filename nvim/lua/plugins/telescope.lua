@@ -8,6 +8,7 @@ return {
 		{ "<leader>ff", function() require("av223119.functions").find_files() end, desc="Find: Files" },
 		{ "<leader>fg", "<cmd>Telescope live_grep<CR>", desc="Find: Grep" },
 		{ "<leader>fb", "<cmd>Telescope buffers<CR>", desc="Find: Buffers" },
+		{ "<leader>fo", "<cmd>Telescope oldfiles<CR>", desc="Find: Old files" },
 	},
 	config = function()
 		local actions = require("telescope.actions")
