@@ -42,13 +42,11 @@ endif
 
 " Plugins
 call plug#begin()
-
 Plug 'overcache/NeoSolarized'
 Plug 'mhartington/oceanic-next'
-
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
+Plug 'tpope/vim-sleuth'
 call plug#end()
 
 " GUI
