@@ -103,7 +103,7 @@ command! -bang -nargs=* GitGrep
 
 " keybindings
 noremap <leader>ff :Files<cr>
-noremap <leader>gf :GFiles<cr>
+noremap <leader>fg :GFiles<cr>
 noremap <leader>gg :GitGrep<cr>
 "noremap <leader>g :execute 'Grep ' . expand('<cword>')<cr>
 vnoremap < <gv
