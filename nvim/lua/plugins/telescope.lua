@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
+	lazy = false,
 	keys = {
 		{ "<leader>ff", function() require("av223119.functions").find_files() end, desc="Find: Files" },
 		{ "<leader>fg", "<cmd>Telescope live_grep<CR>", desc="Find: Grep" },

@@ -8,7 +8,7 @@ set ignorecase
 set smartcase
 set autoindent
 set laststatus=2                      " always
-set scrolloff=1                       " top/bottom screen offset
+set scrolloff=4                       " top/bottom screen offset
 set wildmode=list:longest             " list all, complete longest
 set formatoptions+=j                  " merge two commented lines
 set autoread                          " autoreload modified files
