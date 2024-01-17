@@ -6,7 +6,7 @@ return {
 		highlight = {
 			after = "",
 			comments_only = true,
-			keyword = "bg",
+			keyword = "wide",
 		},
 	},
 }
