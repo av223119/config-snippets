@@ -7,6 +7,7 @@ vim.opt.number = true
 vim.opt.path = { ".", "**" }
 vim.opt.scrolloff = 4
 vim.opt.shiftwidth = 4
+vim.opt.showmode = false
 vim.opt.smartcase = true
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
