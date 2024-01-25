@@ -12,6 +12,7 @@ vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.virtualedit = "block"
 vim.opt.wildignore = { "*/venv/*", "*/.venv/*", "*/__pycache__/*" }
+vim.opt.wildmode = "longest:full"
 
 -- Ideas
 -- vim.opt.inccommand
