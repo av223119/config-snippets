@@ -7,6 +7,7 @@ return {
 	lazy = false,
 	keys = {
 		{ "<leader>ff", function() require("av223119.functions").find_files() end, desc="Find: Files" },
+		{ "<leader>fF", "<cmd>Telescope find_files<CR>", desc="Find: All files" },
 		{ "<leader>fg", "<cmd>Telescope live_grep<CR>", desc="Find: Grep" },
 		{ "<leader>fb", "<cmd>Telescope buffers<CR>", desc="Find: Buffers" },
 		{ "<leader>fo", "<cmd>Telescope oldfiles<CR>", desc="Find: Old files" },
