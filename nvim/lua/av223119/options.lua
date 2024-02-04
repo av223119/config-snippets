@@ -2,6 +2,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { "menu", "preview", "noselect" }
 vim.opt.cursorlineopt = "number"
 vim.opt.cursorline = true
+vim.opt.diffopt = { "internal", "filler", "closeoff", "algorithm:minimal" }
 vim.opt.ignorecase = true
 vim.opt.number = true
 vim.opt.path = { ".", "**" }
