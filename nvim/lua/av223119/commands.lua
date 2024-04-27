@@ -42,3 +42,12 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 		vim.api.nvim_win_set_cursor(0, vim.api.nvim_buf_get_mark(0, '"'))
 	end,
 })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = "__custom",
+	callback = function(ev)
+		local opts = { buffer = ev.buf }
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	end,
+})
