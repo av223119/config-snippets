@@ -2,6 +2,7 @@ return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
 	dependencies = {
+		"nvim-telescope/telescope-ui-select.nvim",
 		"nvim-lua/plenary.nvim",
 	},
 	lazy = false,
@@ -14,7 +15,8 @@ return {
 	},
 	config = function()
 		local actions = require("telescope.actions")
-		require("telescope").setup({
+		local telescope = require("telescope")
+		telescope.setup {
 			defaults = {
 				mappings = {
 					i = {
@@ -23,6 +25,7 @@ return {
 					},
 				},
 			},
-		})
+		}
+		telescope.load_extension("ui-select")
 	end
 }
