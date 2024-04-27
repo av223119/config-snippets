@@ -1,11 +1,11 @@
 -- vim.keymap.set with expr=true wants a function() object to call
-function has(cond, pos, neg)
+local function has(cond, pos, neg)
 	return function()
 		return cond() and pos or neg
 	end
 end
 
-function pum()
+local function pum()
 	return vim.fn.pumvisible() == 1
 end
 
@@ -30,17 +30,13 @@ vim.keymap.set("c", "<Right>", has(pum, "<Down>", "<Right>"), { expr = true })
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
---[[
 -- This doesn't work on MacOS, where Ctrl-Up and Ctrl-Down are caught by the system
-vim.keymap.set({ "n", "i" }, "<C-Up>", "<C-w><Up>")
-vim.keymap.set({ "n", "i" }, "<C-Down>", "<C-w><Down>")
-vim.keymap.set({ "n", "i" }, "<C-Left>", "<C-w><Left>")
-vim.keymap.set({ "n", "i" }, "<C-Right>", "<C-w><Right>")
---]]
+-- vim.keymap.set({ "n", "i" }, "<C-Up>", "<C-w><Up>")
+-- vim.keymap.set({ "n", "i" }, "<C-Down>", "<C-w><Down>")
+-- vim.keymap.set({ "n", "i" }, "<C-Left>", "<C-w><Left>")
+-- vim.keymap.set({ "n", "i" }, "<C-Right>", "<C-w><Right>")
 
---[[
 -- Ctrl-L is good enough
 -- vim.keymap.set("n", "<Esc>", "<C-l>", { remap = true })
---]]
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
