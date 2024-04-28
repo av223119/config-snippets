@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = "__custom",
 	desc = "highlight on yank",
 	callback = function()
-		vim.highlight.on_yank { timeout=250 }
+		vim.highlight.on_yank { timeout = 250 }
 	end,
 })
 
@@ -46,8 +46,25 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = "__custom",
 	callback = function(ev)
-		local opts = { buffer = ev.buf }
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = ev.buf })
+		vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { buffer = ev.buf, desc = "LSP: definiton" })
+		vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, { buffer = ev.buf, desc = "LSP: references" })
+		vim.keymap.set("n", "<leader>li", vim.lsp.buf.incoming_calls, { buffer = ev.buf, desc = "LSP: incoming calls" })
+		vim.keymap.set("n", "<leader>lR", vim.lsp.buf.rename, { buffer = ev.buf, desc = "LSP: Rename" })
+		vim.keymap.set("n", "<leader>lC", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "LSP: Code_action" })
+		vim.keymap.set("n", "<leader>lF", vim.lsp.buf.format, { buffer = ev.buf, desc = "LSP: Format" })
+	end,
+})
+
+vim.api.nvim_create_autocmd("LspDetach", {
+	group = "__custom",
+	callback = function(ev)
+		vim.keymap.del("n", "K", { buffer = ev.buf })
+		vim.keymap.del("n", "<leader>ld", { buffer = ev.buf })
+		vim.keymap.del("n", "<leader>lr", { buffer = ev.buf })
+		vim.keymap.del("n", "<leader>li", { buffer = ev.buf })
+		vim.keymap.del("n", "<leader>lR", { buffer = ev.buf })
+		vim.keymap.del("n", "<leader>lC", { buffer = ev.buf })
+		vim.keymap.del("n", "<leader>lF", { buffer = ev.buf })
 	end,
 })
