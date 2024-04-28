@@ -43,28 +43,31 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	end,
 })
 
+-- LSP keybindings
+local lsp_keys = {
+	{ mode = "n", key = "K",          func = vim.lsp.buf.hover,          desc = "" },
+	{ mode = "n", key = "<leader>ld", func = vim.lsp.buf.definition,     desc = "LSP: definiton" },
+	{ mode = "n", key = "<leader>lr", func = vim.lsp.buf.references,     desc = "LSP: references" },
+	{ mode = "n", key = "<leader>li", func = vim.lsp.buf.incoming_calls, desc = "LSP: incoming calls" },
+	{ mode = "n", key = "<leader>lR", func = vim.lsp.buf.rename,         desc = "LSP: Rename" },
+	{ mode = "n", key = "<leader>lC", func = vim.lsp.buf.code_action,    desc = "LSP: Code_action" },
+	{ mode = "n", key = "<leader>lF", func = vim.lsp.buf.format,         desc = "LSP: Format" },
+}
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = "__custom",
 	callback = function(ev)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = ev.buf })
-		vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { buffer = ev.buf, desc = "LSP: definiton" })
-		vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, { buffer = ev.buf, desc = "LSP: references" })
-		vim.keymap.set("n", "<leader>li", vim.lsp.buf.incoming_calls, { buffer = ev.buf, desc = "LSP: incoming calls" })
-		vim.keymap.set("n", "<leader>lR", vim.lsp.buf.rename, { buffer = ev.buf, desc = "LSP: Rename" })
-		vim.keymap.set("n", "<leader>lC", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "LSP: Code_action" })
-		vim.keymap.set("n", "<leader>lF", vim.lsp.buf.format, { buffer = ev.buf, desc = "LSP: Format" })
+		for _, v in ipairs(lsp_keys) do
+			vim.keymap.set(v.mode, v.key, v.func, { buffer = ev.buf, desc = v.desc })
+		end
 	end,
 })
 
 vim.api.nvim_create_autocmd("LspDetach", {
 	group = "__custom",
 	callback = function(ev)
-		vim.keymap.del("n", "K", { buffer = ev.buf })
-		vim.keymap.del("n", "<leader>ld", { buffer = ev.buf })
-		vim.keymap.del("n", "<leader>lr", { buffer = ev.buf })
-		vim.keymap.del("n", "<leader>li", { buffer = ev.buf })
-		vim.keymap.del("n", "<leader>lR", { buffer = ev.buf })
-		vim.keymap.del("n", "<leader>lC", { buffer = ev.buf })
-		vim.keymap.del("n", "<leader>lF", { buffer = ev.buf })
+		for _, v in ipairs(lsp_keys) do
+			vim.keymap.del(v.mode, v.key, { buffer = ev.buf })
+		end
 	end,
 })
