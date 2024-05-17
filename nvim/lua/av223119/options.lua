@@ -11,7 +11,6 @@ vim.opt.shiftwidth = 4
 vim.opt.showmode = false
 vim.opt.smartcase = true
 vim.opt.tabstop = 4
-vim.opt.termguicolors = true
 vim.opt.virtualedit = "block"
 vim.opt.wildignore = { "*/venv/*", "*/.venv/*", "*/__pycache__/*" }
 vim.opt.wildmode = "longest:full"
