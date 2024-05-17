@@ -45,13 +45,21 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- LSP keybindings
 local lsp_keys = {
-	{ mode = "n", key = "K",          func = vim.lsp.buf.hover,          desc = "" },
+	-- { mode = "n", key = "K",          func = vim.lsp.buf.hover,          desc = "" },
 	{ mode = "n", key = "<leader>ld", func = vim.lsp.buf.definition,     desc = "LSP: definiton" },
 	{ mode = "n", key = "<leader>lr", func = vim.lsp.buf.references,     desc = "LSP: references" },
 	{ mode = "n", key = "<leader>li", func = vim.lsp.buf.incoming_calls, desc = "LSP: incoming calls" },
 	{ mode = "n", key = "<leader>lR", func = vim.lsp.buf.rename,         desc = "LSP: Rename" },
 	{ mode = "n", key = "<leader>lC", func = vim.lsp.buf.code_action,    desc = "LSP: Code_action" },
 	{ mode = "n", key = "<leader>lF", func = vim.lsp.buf.format,         desc = "LSP: Format" },
+	{
+		mode = "n",
+		key = "<leader>lh",
+		func = function()
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+		end,
+		desc = "LSP: togge inlay hints"
+	},
 }
 
 vim.api.nvim_create_autocmd("LspAttach", {
