@@ -44,14 +44,14 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 -- LSP keybindings
+local telescope = require("telescope.builtin")
 local lsp_keys = {
-	-- { mode = "n", key = "K",          func = vim.lsp.buf.hover,          desc = "" },
-	{ mode = "n", key = "<leader>ld", func = vim.lsp.buf.definition,     desc = "LSP: definiton" },
-	{ mode = "n", key = "<leader>lr", func = vim.lsp.buf.references,     desc = "LSP: references" },
-	{ mode = "n", key = "<leader>li", func = vim.lsp.buf.incoming_calls, desc = "LSP: incoming calls" },
-	{ mode = "n", key = "<leader>lR", func = vim.lsp.buf.rename,         desc = "LSP: Rename" },
-	{ mode = "n", key = "<leader>lC", func = vim.lsp.buf.code_action,    desc = "LSP: Code_action" },
-	{ mode = "n", key = "<leader>lF", func = vim.lsp.buf.format,         desc = "LSP: Format" },
+	{ mode = "n", key = "<leader>ld", func = telescope.lsp_definitions,    desc = "LSP: definiton" },
+	{ mode = "n", key = "<leader>lr", func = telescope.lsp_references,     desc = "LSP: references" },
+	{ mode = "n", key = "<leader>li", func = telescope.lsp_incoming_calls, desc = "LSP: incoming calls" },
+	{ mode = "n", key = "<leader>lR", func = vim.lsp.buf.rename,           desc = "LSP: Rename" },
+	{ mode = "n", key = "<leader>lC", func = vim.lsp.buf.code_action,      desc = "LSP: Code_action" },
+	{ mode = "n", key = "<leader>lF", func = vim.lsp.buf.format,           desc = "LSP: Format" },
 	{
 		mode = "n",
 		key = "<leader>lh",
