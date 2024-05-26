@@ -37,10 +37,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.api.nvim_create_autocmd("BufReadPost", {
 	group = "__custom",
-	-- command = [[ silent! normal! g`"zv ]],
-	callback = function()
-		vim.api.nvim_win_set_cursor(0, vim.api.nvim_buf_get_mark(0, '"'))
-	end,
+	command = [[ silent! normal! g`"zv ]],
+	-- callback = function()
+	-- 	vim.api.nvim_win_set_cursor(0, vim.api.nvim_buf_get_mark(0, '"'))
+	-- end,
 })
 
 -- LSP keybindings
