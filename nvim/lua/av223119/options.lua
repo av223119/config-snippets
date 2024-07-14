@@ -1,5 +1,5 @@
 vim.opt.clipboard = "unnamedplus"
-vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.completeopt = { "menuone" }
 vim.opt.cursorlineopt = "number"
 vim.opt.cursorline = true
 vim.opt.diffopt = { "internal", "filler", "closeoff", "algorithm:minimal" }
