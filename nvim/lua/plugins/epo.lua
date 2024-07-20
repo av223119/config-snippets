@@ -3,6 +3,6 @@ return {
 	opts = {
 		kind_format = function(k)
 			return k
-		end
+		end,
 	},
 }
