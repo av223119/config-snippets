@@ -24,3 +24,18 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	-- 	vim.api.nvim_win_set_cursor(0, vim.api.nvim_buf_get_mark(0, '"'))
 	-- end,
 })
+
+vim.api.nvim_create_autocmd("VimEnter", {
+	group = "__custom",
+	nested = true,
+	callback = function()
+		pcall(vim.cmd.colorscheme, vim.g.SAVED_COLORSCHEME)
+	end,
+})
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+	group = "__custom",
+	callback = function(ev)
+		vim.g.SAVED_COLORSCHEME = ev.match
+	end,
+})
