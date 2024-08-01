@@ -17,6 +17,7 @@ local function quickfix()
 	end
 	return false
 end
+
 vim.keymap.set({ "n", "i" }, "[q", has(quickfix, "<cmd>cprev<CR>", nil), { expr = true })
 vim.keymap.set({ "n", "i" }, "]q", has(quickfix, "<cmd>cnext<CR>", nil), { expr = true })
 
@@ -27,12 +28,6 @@ vim.keymap.set("c", "<Right>", has(pum, "<Down>", "<Right>"), { expr = true })
 
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
-
--- This doesn't work on MacOS, where Ctrl-Up and Ctrl-Down are caught by the system
--- vim.keymap.set({ "n", "i" }, "<C-Up>", "<C-w><Up>")
--- vim.keymap.set({ "n", "i" }, "<C-Down>", "<C-w><Down>")
--- vim.keymap.set({ "n", "i" }, "<C-Left>", "<C-w><Left>")
--- vim.keymap.set({ "n", "i" }, "<C-Right>", "<C-w><Right>")
 
 -- Ctrl-L is good enough
 -- vim.keymap.set("n", "<Esc>", "<C-l>", { remap = true })
