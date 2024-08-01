@@ -24,9 +24,6 @@ return {
 				enable = true
 			}
 		}
-		-- some themes omit diff definitions
-		vim.cmd.highlight "def link @text.diff.delete DiffRemoved"
-		vim.cmd.highlight "def link @text.diff.add DiffAdded"
 
 		-- folding
 		vim.opt.foldmethod = "expr"
