@@ -15,19 +15,18 @@ return {
 
 		local telescope = require("telescope.builtin")
 		local lsp_keys = {
-			{ mode = "n", key = "<leader>ld", func = telescope.lsp_definitions,    desc = "LSP: definiton" },
-			{ mode = "n", key = "<leader>lr", func = telescope.lsp_references,     desc = "LSP: references" },
-			{ mode = "n", key = "<leader>li", func = telescope.lsp_incoming_calls, desc = "LSP: incoming calls" },
-			{ mode = "n", key = "<leader>lR", func = vim.lsp.buf.rename,           desc = "LSP: Rename" },
-			{ mode = "n", key = "<leader>lC", func = vim.lsp.buf.code_action,      desc = "LSP: Code_action" },
-			{ mode = "n", key = "<leader>lF", func = vim.lsp.buf.format,           desc = "LSP: Format" },
+			{ key = "<leader>ld", func = telescope.lsp_definitions,    desc = "definiton" },
+			{ key = "<leader>lr", func = telescope.lsp_references,     desc = "references" },
+			{ key = "<leader>li", func = telescope.lsp_incoming_calls, desc = "incoming calls" },
+			{ key = "<leader>lR", func = vim.lsp.buf.rename,           desc = "Rename" },
+			{ key = "<leader>lC", func = vim.lsp.buf.code_action,      desc = "Code_action" },
+			{ key = "<leader>lF", func = vim.lsp.buf.format,           desc = "Format" },
 			{
-				mode = "n",
 				key = "<leader>lh",
 				func = function()
 					vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 				end,
-				desc = "LSP: togge inlay hints"
+				desc = "togge inlay hints"
 			},
 		}
 
@@ -37,7 +36,7 @@ return {
 			group = "lsp_group",
 			callback = function(ev)
 				for _, v in ipairs(lsp_keys) do
-					vim.keymap.set(v.mode, v.key, v.func, { buffer = ev.buf, desc = v.desc })
+					vim.keymap.set("n", v.key, v.func, { buffer = ev.buf, desc = "LSP: " .. v.desc })
 				end
 			end,
 		})
@@ -46,7 +45,7 @@ return {
 			group = "lsp_group",
 			callback = function(ev)
 				for _, v in ipairs(lsp_keys) do
-					vim.keymap.del(v.mode, v.key, { buffer = ev.buf })
+					vim.keymap.del("n", v.key, { buffer = ev.buf })
 				end
 			end,
 		})
