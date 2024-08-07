@@ -2,10 +2,12 @@ vim.api.nvim_create_augroup("__custom", {})
 
 vim.api.nvim_create_autocmd("FileType", {
 	group = "__custom",
-	pattern = { "toml", "cfg", "conf" },
+	pattern = { "json", "toml", "cfg", "conf" },
 	desc = "expand tabs in toml",
 	callback = function()
 		vim.bo.expandtab = true
+		vim.bo.shiftwidth = 4
+		vim.bo.tabstop = 4
 	end,
 })
 
