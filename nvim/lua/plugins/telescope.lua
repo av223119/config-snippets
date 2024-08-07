@@ -18,6 +18,12 @@ return {
 		local telescope = require("telescope")
 		telescope.setup {
 			defaults = {
+				layout_strategy = "flex",
+				layout_config = {
+					horizontal = {
+						width = 0.9,
+					},
+				},
 				mappings = {
 					i = {
 						["<Esc>"] = actions.close,
