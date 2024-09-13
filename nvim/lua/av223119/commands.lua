@@ -21,14 +21,25 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.api.nvim_create_autocmd("BufReadPost", {
 	group = "__custom",
-	command = [[ silent! normal! g`"zv ]],
-	-- callback = function()
-	-- 	vim.api.nvim_win_set_cursor(0, vim.api.nvim_buf_get_mark(0, '"'))
-	-- end,
+	desc = "return to last cursor position",
+	-- command = [[ silent! normal! g`"zv ]],
+	callback = function()
+		pcall(vim.api.nvim_win_set_cursor, 0, vim.api.nvim_buf_get_mark(0, '"'))
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = "__custom",
+	desc = "auto-cd to project root",
+	callback = function(ev)
+		local root = vim.fs.root(ev.buf, {".git", "Makefile", "pyproject.toml"})
+		if root then vim.cmd.chdir(root) end
+	end,
 })
 
 vim.api.nvim_create_autocmd("VimEnter", {
 	group = "__custom",
+	desc = "apply saved colorscheme",
 	nested = true,
 	callback = function()
 		pcall(vim.cmd.colorscheme, vim.g.SAVED_COLORSCHEME)
@@ -37,6 +48,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 vim.api.nvim_create_autocmd("ColorScheme", {
 	group = "__custom",
+	desc = "save colorscheme",
 	callback = function(ev)
 		vim.g.SAVED_COLORSCHEME = ev.match
 	end,
