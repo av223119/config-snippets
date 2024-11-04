@@ -2,12 +2,21 @@ vim.api.nvim_create_augroup("__custom", {})
 
 vim.api.nvim_create_autocmd("FileType", {
 	group = "__custom",
-	pattern = { "json", "toml", "cfg", "conf" },
+	pattern = { "json", "toml", "cfg", "conf", "groovy" },
 	desc = "expand tabs in toml",
 	callback = function()
 		vim.bo.expandtab = true
 		vim.bo.shiftwidth = 4
 		vim.bo.tabstop = 4
+	end,
+})
+
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+	group = "__custom",
+	pattern = { "*.jenkinsfile", "Jenkinsfile" },
+	desc = "expand tabs in toml",
+	callback = function()
+		vim.bo.filetype = "groovy"
 	end,
 })
 
