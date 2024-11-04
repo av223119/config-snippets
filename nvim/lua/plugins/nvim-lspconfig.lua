@@ -11,6 +11,15 @@ return {
 			function(name)
 				require("lspconfig")[name].setup {}
 			end,
+			["basedpyright"] = function()
+				require("lspconfig").basedpyright.setup {
+					settings = {
+						python = {
+							pythonPath = "./venv/bin/python",
+						},
+					}
+				}
+			end,
 		}
 
 		local telescope = require("telescope.builtin")
