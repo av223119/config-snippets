@@ -20,7 +20,8 @@ return {
 			lualine_c = {
 				{
 					function()
-						return require("nvim-navic").get_location()
+						local loc = require("nvim-navic").get_location()
+						return (loc == "" and " ") or loc
 					end,
 					cond = function()
 						local ok, navic = pcall(require, "nvim-navic")
