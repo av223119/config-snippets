@@ -7,19 +7,21 @@ return {
 		keymap = {
 			preset = "super-tab",
 		},
+		signature = {
+			enabled = true,
+		},
 		completion = {
 			-- ghost_text = {
 			-- 	enabled = true
 			-- },
-			-- menu = {
-			-- 	auto_show = function(ctx) return ctx.mode == "cmdline" end,
-			-- },
+			menu = {
+				border = "single",
+			},
 			list = {
 				selection = function(ctx) return ctx.mode == "cmdline" and "auto_insert" or "preselect" end,
 			},
 			documentation = {
 				auto_show = true,
-				auto_show_delay_ms = 500,
 			},
 		},
 	},
