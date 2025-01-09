@@ -2,7 +2,7 @@ return {
 	"saghen/blink.cmp",
 	-- optional: provides snippets for the snippet source
 	-- dependencies = "rafamadriz/friendly-snippets",
-	version = "v0.9.2",
+	version = "v0.10.0",
 	opts = {
 		keymap = {
 			preset = "super-tab",
@@ -14,15 +14,18 @@ return {
 			-- ghost_text = {
 			-- 	enabled = true
 			-- },
-			menu = {
-				border = "single",
-			},
+			-- menu = {
+			-- 	border = "single",
+			-- },
 			list = {
-				selection = function(ctx) return ctx.mode == "cmdline" and "auto_insert" or "preselect" end,
+				selection = {
+					preselect = true,
+					auto_insert = false,
+				},
 			},
-			documentation = {
-				auto_show = true,
-			},
+			-- documentation = {
+			-- 	auto_show = true,
+			-- },
 		},
 	},
 }
