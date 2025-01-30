@@ -1,13 +1,14 @@
-PROMPT_COMMAND=__myprompt
+PROMPT_COMMAND=_myprompt
 
-__c() {
+_c() {
   echo "\[\e[$1m\]"
 }
 
-__myprompt() {
+_myprompt() {
   local exit="$?"
   ret=0
   (( $exit )) && ret=31
   branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-  PS1="$(__c 34)┌ $(__c $ret)R=$exit$(__c 0) [$(date +%H:%M)] \u@\h:$(__c 32)\w$(__c 33)${branch:+ ⎇ $branch}$(__c 0)${VIRTUAL_ENV:+ ⧉ ${VIRTUAL_ENV##*/}}\n$(__c 34)└$(__c 0) \$ "
+  title="\[\e]0;\u@\h:\w\a\]"
+  PS1="$title$(_c 34)┌ $(_c $ret)R=$exit$(_c 0) [$(date +%H:%M)] \u@\h:$(_c 32)\w$(_c 33)${branch:+ ⎇ $branch}$(_c 0)${VIRTUAL_ENV:+ ⧉ ${VIRTUAL_ENV##*/}}\n$(_c 34)└$(_c 0) \$ "
 }
