@@ -2,7 +2,7 @@ return {
 	"saghen/blink.cmp",
 	-- optional: provides snippets for the snippet source
 	-- dependencies = "rafamadriz/friendly-snippets",
-	version = "v0.10.0",
+	version = "v0.11.0",
 	opts = {
 		keymap = {
 			preset = "super-tab",
