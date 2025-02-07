@@ -7,9 +7,9 @@ return {
 		keymap = {
 			preset = "super-tab",
 		},
-		signature = {
-			enabled = true,
-		},
+		-- signature = {
+		-- 	enabled = true,
+		-- },
 		completion = {
 			-- ghost_text = {
 			-- 	enabled = true
