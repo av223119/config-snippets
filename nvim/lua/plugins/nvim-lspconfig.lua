@@ -22,11 +22,7 @@ return {
 			end,
 		}
 
-		local telescope = require("telescope.builtin")
 		local lsp_keys = {
-			{ key = "<leader>ld", func = telescope.lsp_definitions,    desc = "definiton" },
-			{ key = "<leader>lr", func = telescope.lsp_references,     desc = "references" },
-			{ key = "<leader>li", func = telescope.lsp_incoming_calls, desc = "incoming calls" },
 			{ key = "<leader>lR", func = vim.lsp.buf.rename,           desc = "Rename" },
 			{ key = "<leader>lC", func = vim.lsp.buf.code_action,      desc = "Code_action" },
 			{ key = "<leader>lF", func = vim.lsp.buf.format,           desc = "Format" },
