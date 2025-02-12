@@ -12,18 +12,22 @@ return {
 		input = {},
 	},
 	keys = {
-		{ "<C-\\>", function() Snacks.terminal.toggle() end, mode = { "n", "t" }, desc = "Toggle terminal" },
+		{ "<C-\\>",     function() Snacks.terminal.toggle() end, mode = { "n", "t" }, desc = "Toggle terminal" },
 		{ "<leader>ld", function() Snacks.picker.lsp_definitions() end, desc = "LSP: definition" },
 		{ "<leader>lr", function() Snacks.picker.lsp_references() end, desc = "LSP: references" },
+		{ "<leader>ls", function() Snacks.picker.lsp_symbols { layout = "vscode" } end, desc = "LSP: symbols" },
+		{ "<leader>fS", function() Snacks.picker.pickers { layout = "vscode" } end, desc = "Find: pickers" },
 		{ "<leader>fb", function() Snacks.picker.buffers() end, desc = "Find: buffers" },
 		{ "<leader>fo", function() Snacks.picker.recent() end, desc = "Find: old files" },
-		{ "<leader>fg",
+		{
+			"<leader>fg",
 			function()
 				return Snacks.git.get_root() and Snacks.picker.git_grep() or Snacks.picker.grep()
 			end,
 			desc = "Find: grep"
 		},
-		{ "<leader>ff",
+		{
+			"<leader>ff",
 			function()
 				return Snacks.git.get_root() and Snacks.picker.git_files() or Snacks.picker.files()
 			end,
