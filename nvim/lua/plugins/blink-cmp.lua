@@ -20,9 +20,14 @@ return {
 					auto_insert = false,
 				},
 			},
-			-- documentation = {
-			-- 	auto_show = true,
-			-- },
+		},
+		cmdline = {
+			keymap = {
+				preset = "super-tab",
+			},
+			completion = {
+				menu = { auto_show = true },
+			}
 		},
 	},
 }
