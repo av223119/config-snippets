@@ -29,7 +29,4 @@ vim.keymap.set("c", "<Right>", has(pum, "<Down>", "<Right>"), { expr = true })
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
--- Ctrl-L is good enough
--- vim.keymap.set("n", "<Esc>", "<C-l>", { remap = true })
-
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
