@@ -25,3 +25,9 @@ vim.g.SAVED_COLORSCHEME = "habamax"
 -- Ideas
 -- vim.opt.inccommand
 -- vim.opt.laststatus = 3
+
+vim.diagnostic.config {
+	virtual_text = {
+		current_line = true
+	}
+}
