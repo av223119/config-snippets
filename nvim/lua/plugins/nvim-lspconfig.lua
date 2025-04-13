@@ -8,16 +8,7 @@ return {
 		require("mason").setup {}
 		require("mason-lspconfig").setup_handlers {
 			function(name)
-				require("lspconfig")[name].setup {}
-			end,
-			["basedpyright"] = function()
-				require("lspconfig").basedpyright.setup {
-					settings = {
-						python = {
-							pythonPath = "./venv/bin/python",
-						},
-					}
-				}
+				vim.lsp.enable(name)
 			end,
 		}
 
