@@ -18,9 +18,12 @@ return {
 		local s = require("snacks")
 		return {
 			{ "<C-\\>",     function() s.terminal.toggle() end, mode = { "n", "t" }, desc = "Toggle terminal" },
+			{ "<leader>r",  function() s.picker.resume() end, desc = "Resume picker" },
 			{ "<leader>ld", function() s.picker.lsp_definitions() end, desc = "LSP: definition" },
 			{ "<leader>lr", function() s.picker.lsp_references() end, desc = "LSP: references" },
 			{ "<leader>ls", function() s.picker.lsp_symbols() end, desc = "LSP: symbols" },
+			{ "<leader>li", function() s.picker.lsp_incoming_calls() end, desc = "LSP: incoming calls" },
+			{ "<leader>lS", function() s.picker.lsp_workspace_symbols() end, desc = "LSP: workspace symbols" },
 			{ "<leader>fS", function() s.picker.pickers { layout = "vscode" } end, desc = "Find: pickers" },
 			{ "<leader>fb", function() s.picker.buffers() end, desc = "Find: buffers" },
 			{ "<leader>fo", function() s.picker.recent() end, desc = "Find: old files" },
