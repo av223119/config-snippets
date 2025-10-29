@@ -43,6 +43,7 @@ return {
 			},
 			{ "<leader>fG", function() s.picker.grep() end, desc = "Find: grep all" },
 			{ "<leader>fF", function() s.picker.files() end, desc = "Find: files all" },
+			{ "<leader>s",  function() s.scratch() end, desc = "Scratch buffer" },
 		}
 	end
 }
