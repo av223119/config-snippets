@@ -2,9 +2,13 @@ vim.api.nvim_create_augroup("__custom", {})
 
 vim.api.nvim_create_autocmd("FileType", {
 	group = "__custom",
-	pattern = { "json", "toml", "cfg", "conf", "groovy" },
+	pattern = { "json", "toml", "cfg", "conf", "groovy", "python" },
 	desc = "expand tabs in toml",
 	callback = function()
+		-- vim.treesitter.start()
+		-- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+		-- vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+		-- vim.wo[0][0].foldmethod = 'expr'
 		vim.bo.expandtab = true
 		vim.bo.shiftwidth = 4
 		vim.bo.tabstop = 4
