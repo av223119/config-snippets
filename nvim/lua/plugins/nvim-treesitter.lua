@@ -1,33 +1,42 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
+	lazy = false,
+	branch = "main",
 	config = function()
-		require("nvim-treesitter.configs").setup {
-			ensure_installed = {
-				"lua",
-				"vim",
-				"vimdoc",
-				"query",
-				"python",
-				"bash",
-				"markdown",
-				"html",
-				"htmldjango",
-				"diff",
-			},
-			auto_install = true,
-			highlight = {
-				enable = true,
-				additional_vim_regex_highlighting = false
-			},
-			indent = {
-				enable = true
-			}
+		local ts = require "nvim-treesitter"
+		ts.install {
+			"bash",
+			"diff",
+			"html",
+			"htmldjango",
+			"json",
+			"lua",
+			"markdown",
+			"python",
+			"query",
+			"toml",
+			"vim",
+			"vimdoc",
 		}
-
-		-- folding
-		vim.opt.foldmethod = "expr"
-		vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-		vim.opt.foldlevel = 99
-	end
+		local group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true })
+		vim.api.nvim_create_autocmd('FileType', {
+			group = group,
+			desc = "Enable treesitter",
+			callback = function(event)
+				local lang = vim.treesitter.language.get_lang(event.match) or event.match
+				local buf = event.buf
+				if vim.list_contains(ts.get_installed(), vim.treesitter.language.get_lang(lang))
+				then
+					vim.treesitter.start(buf)
+					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+					vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+					vim.wo.foldmethod = "expr"
+					vim.wo.foldlevel = 99
+				else
+					ts.install { lang }
+				end
+			end,
+		})
+	end,
 }
