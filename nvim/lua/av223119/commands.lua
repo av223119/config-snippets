@@ -3,7 +3,7 @@ vim.api.nvim_create_augroup("__custom", {})
 vim.api.nvim_create_autocmd("FileType", {
 	group = "__custom",
 	pattern = { "json", "toml", "cfg", "conf", "groovy", "python" },
-	desc = "expand tabs in toml",
+	desc = "expand tabs",
 	callback = function()
 		-- vim.treesitter.start()
 		-- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
 	group = "__custom",
 	pattern = { "*.jenkinsfile", "Jenkinsfile" },
-	desc = "expand tabs in toml",
+	desc = "jenkinsfiles are groovy",
 	callback = function()
 		vim.bo.filetype = "groovy"
 	end,
