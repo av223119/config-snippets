@@ -26,16 +26,29 @@ return {
 			callback = function(event)
 				local lang = vim.treesitter.language.get_lang(event.match) or event.match
 				local buf = event.buf
-				if vim.list_contains(ts.get_installed(), vim.treesitter.language.get_lang(lang))
+				if string.find(lang, "snacks_")
 				then
-					vim.treesitter.start(buf)
-					vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-					vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-					vim.wo.foldmethod = "expr"
-					vim.wo.foldlevel = 99
-				else
-					ts.install { lang }
+					return
 				end
+				local i = 0
+				local timer = vim.uv.new_timer()
+				ts.install { lang }
+				timer:start(0, 1000, vim.schedule_wrap(function()
+					i = i + 1
+					if vim.list_contains(ts.get_installed(), vim.treesitter.language.get_lang(lang))
+					then
+						timer:close()
+						vim.treesitter.start(buf)
+						vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+						vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+						vim.wo.foldmethod = "expr"
+						vim.wo.foldlevel = 99
+					end
+					if i > 60
+					then
+						timer:close()
+					end
+				end))
 			end,
 		})
 	end,
