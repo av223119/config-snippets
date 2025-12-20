@@ -24,17 +24,18 @@ return {
 			group = group,
 			desc = "Enable treesitter",
 			callback = function(event)
-				local lang = vim.treesitter.language.get_lang(event.match) or event.match
+				local lang = vim.treesitter.language.get_lang(event.match)
 				local buf = event.buf
-				if string.find(lang, "snacks_")
-				then
-					return
-				end
 				local i = 0
 				local timer = vim.uv.new_timer()
 				ts.install { lang }
 				timer:start(0, 1000, vim.schedule_wrap(function()
 					i = i + 1
+					if i > 60 or not vim.api.nvim_buf_is_valid(buf)
+					then
+						timer:close()
+						return
+					end
 					if vim.list_contains(ts.get_installed(), vim.treesitter.language.get_lang(lang))
 					then
 						timer:close()
@@ -43,10 +44,6 @@ return {
 						vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 						vim.wo.foldmethod = "expr"
 						vim.wo.foldlevel = 99
-					end
-					if i > 60
-					then
-						timer:close()
 					end
 				end))
 			end,
