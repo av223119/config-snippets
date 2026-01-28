@@ -25,6 +25,7 @@ return {
 			desc = "Enable treesitter",
 			callback = function(event)
 				local lang = vim.treesitter.language.get_lang(event.match)
+				if string.find(lang, "snacks_") or string.find(lang, "blink-") then return end
 				local buf = event.buf
 				local i = 0
 				local timer = vim.uv.new_timer()
