@@ -18,6 +18,7 @@ vim.opt.smartcase = true
 vim.opt.virtualedit = "block"
 vim.opt.wildignore = { "*/venv/*", "*/.venv/*", "*/__pycache__/*" }
 vim.opt.wildmode = "longest:full"
+vim.opt.signcolumn = "yes"
 
 -- save and restore colorscheme, fallback to habamax. `shada` contains `!` by default
 vim.g.SAVED_COLORSCHEME = "habamax"
