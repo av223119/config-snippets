@@ -13,12 +13,13 @@ vim.opt.ignorecase = true
 vim.opt.number = true
 vim.opt.path = { ".", "**" }
 vim.opt.scrolloff = 4
+vim.opt.signcolumn = "yes"
 vim.opt.showmode = false
 vim.opt.smartcase = true
 vim.opt.virtualedit = "block"
 vim.opt.wildignore = { "*/venv/*", "*/.venv/*", "*/__pycache__/*" }
 vim.opt.wildmode = "longest:full"
-vim.opt.signcolumn = "yes"
+vim.opt.winborder = "single"
 
 -- save and restore colorscheme, fallback to habamax. `shada` contains `!` by default
 vim.g.SAVED_COLORSCHEME = "habamax"
