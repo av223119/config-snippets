@@ -9,15 +9,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-	group = "__custom",
-	pattern = { "*.jenkinsfile", "Jenkinsfile" },
-	desc = "jenkinsfiles are groovy",
-	callback = function()
-		vim.bo.filetype = "groovy"
-	end,
-})
-
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = "__custom",
 	desc = "highlight on yank",

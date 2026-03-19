@@ -35,3 +35,9 @@ vim.diagnostic.config {
 		current_line = true
 	}
 }
+
+vim.filetype.add {
+	extension = {
+		jenkinsfile = "groovy",
+	},
+}
