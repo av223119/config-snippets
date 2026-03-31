@@ -5,12 +5,16 @@
       "src": "https://github.com/saghen/blink.cmp",
       "version": "'v1'"
     },
+    "csvview.nvim": {
+      "rev": "7022e18a0fbae9aecf99a3ba02b2a541edc2b8a1",
+      "src": "https://github.com/hat0uma/csvview.nvim"
+    },
     "github-plus.nvim": {
       "rev": "6459af1c7af9c62e159e8e75aa1509ebda33bfd9",
       "src": "https://github.com/tommarien/github-plus.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "50c205548d8b037b7ff6378fca6d21146f0b6161",
+      "rev": "8a796a440fde3eeed3f33aecce9dab863b2be218",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "lualine.nvim": {
