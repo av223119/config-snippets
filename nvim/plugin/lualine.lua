@@ -30,6 +30,9 @@ require("lualine").setup {
 					return ok and navic.is_available()
 				end
 			},
+		},
+		lualine_x = {
+			"lsp_status"
 		}
 	}
 }
