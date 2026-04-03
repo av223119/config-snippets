@@ -13,6 +13,7 @@ vim.pack.add {
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" }
 }
 local ts = require "nvim-treesitter"
+local tsc = require "nvim-treesitter.config"
 local group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	group = group,
@@ -21,7 +22,11 @@ vim.api.nvim_create_autocmd("FileType", {
 		local lang = vim.treesitter.language.get_lang(event.match)
 		local buf = event.buf
 		local i = 0
-		if (not lang) or (not vim.tbl_contains(ts.get_available(), lang)) then
+		if
+			not lang
+			or vim.tbl_contains(tsc.get_installed(), lang)
+			or not vim.tbl_contains(ts.get_available(), lang)
+		then
 			return
 		end
 		local timer = vim.uv.new_timer()
