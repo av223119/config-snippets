@@ -1,21 +1,18 @@
 vim.pack.add {
-	{ src = "https://github.com/saghen/blink.cmp", version = "v1" }
+	"https://github.com/saghen/blink.lib",
+	"https://github.com/saghen/blink.cmp",
 }
+require("blink.cmp").build():pwait()
 require("blink.cmp").setup {
-	fuzzy = {
-		prebuilt_binaries = {
-			force_version = "v1.*",
-		},
-	},
 	keymap = {
 		preset = "super-tab",
 	},
 	-- signature = {
-	-- 	enabled = true,
+	--     enabled = true,
 	-- },
 	completion = {
 		-- ghost_text = {
-		-- 	enabled = true
+		--     enabled = true
 		-- },
 		list = {
 			selection = {
