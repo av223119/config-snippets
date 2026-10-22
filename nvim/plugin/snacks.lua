@@ -11,6 +11,7 @@ s.setup {
 	picker = {
 		layout = "bottom",
 		prompt = "›",
+		ui_select = true,
 	},
 	input = { icon = "›" },
 }
